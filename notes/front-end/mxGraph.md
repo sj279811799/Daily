@@ -384,7 +384,7 @@ XML数据格式：
 ```
 
 JSON数据格式：
-```json
+```javascript
 [
     {
         id: '0',
