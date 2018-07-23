@@ -3,7 +3,8 @@ mxGraph是一个开源的JavaScript图表组件，使用svg和html渲染。
 
 ## demo
 
-```
+```javascript
+import React, { Component } from 'react';
 import {
   mxEditor,
   mxGraphHandler,
@@ -42,8 +43,6 @@ class Graph extends Component {
    * @param graph
    */
   setStyle = (graph) => {
-    const { showLineLabel } = this.state;
-
     // 获取连线样式对象
     const styleEdge = graph.getStylesheet().getDefaultEdgeStyle();
     // 连线样式-转角处是不是圆角
@@ -53,7 +52,7 @@ class Graph extends Component {
     // 线宽
     styleEdge.strokeWidth = 2;
     // 是否在连线上显示label
-    styleEdge[mxConstants.STYLE_NOLABEL] = showLineLabel;
+    styleEdge[mxConstants.STYLE_NOLABEL] = true;
     styleEdge[mxConstants.STYLE_FONTCOLOR] = '#000000';
 
     // 功能暂时不明确
@@ -114,7 +113,6 @@ class Graph extends Component {
           source,
           target,
         } = cell;
-        maxId = id > maxId ? id : maxId;
         // If element is Vertex/cell
         if (vertex && mxGeometry.length) {
           const {
@@ -145,10 +143,6 @@ class Graph extends Component {
       graph.moveCells(graph.getChildCells(null, true, true), 1, 0);
       graph.moveCells(graph.getChildCells(null, true, true), -1, 0);
       graph.center();
-      this.setState({
-        changed: false,
-        maxId,
-      });
     }
   };
 
@@ -193,9 +187,6 @@ class Graph extends Component {
           const height = geometry[0].getAttribute('height');
           // add vertex
           vertexes[id] = graph.insertVertex(parent, id, value, x, y, width, height, style);
-          this.setState({
-            nodesLength: this.state.nodesLength + 1,
-          });
         } else if (element.hasAttribute('edge')) {
           const { parentNode } = element;
           const seqIndex = parentNode.getAttribute('seq');
@@ -217,9 +208,6 @@ class Graph extends Component {
       graph.moveCells(graph.getChildCells(null, true, true), 1, 0);
       graph.moveCells(graph.getChildCells(null, true, true), -1, 0);
       graph.center();
-      this.setState({
-        changed: false,
-      });
     }
   };
 
