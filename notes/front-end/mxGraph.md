@@ -348,3 +348,129 @@ class Graph extends Component {
 export default Graph;
 
 ```
+
+XML数据格式：
+```xml
+<mxGraphModel>
+    <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="2" value="Shot 010" vertex="1" parent="1">
+            <mxGeometry x="-420" y="-110" width="100" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="3" value="Shot 020" vertex="1" parent="1">
+            <mxGeometry x="-160" y="-110" width="100" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="4" value="Shot 030" vertex="1" parent="1">
+            <mxGeometry x="90" y="-110" width="100" height="50" as="geometry"/>
+        </mxCell>
+
+        <Sequence seq="#f44336" id="5">
+            <mxCell style="strokeColor=#f44336" edge="1" parent="1" source="2" target="3">
+                <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+        </Sequence>
+
+        <Sequence seq="#f44336" id="6">
+            <mxCell style="strokeColor=#f44336" edge="1" parent="1" source="3" target="4">
+                <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+        </Sequence>
+    </root>
+</mxGraphModel>
+```
+
+JSON数据格式：
+```json
+[
+    {
+        id: '0',
+    },
+    {
+        id: '1',
+        parent: '0',
+    },
+    {
+        id: '2',
+        parent: '1',
+        value: 'Shot 010',
+        vertex: '1',
+        mxGeometry: [
+            {
+                x: -420,
+                y: -110,
+                width: 100,
+                height: 50,
+                as: geometry,
+            },
+        ],
+    },
+    {
+        id: '3',
+        parent: '1',
+        value: 'Shot 020',
+        vertex: '1',
+        mxGeometry: [
+            {
+                x: -160,
+                y: -110,
+                width: 100,
+                height: 50,
+                as: geometry,
+            },
+        ],
+    },
+    {
+        id: '4',
+        parent: '1',
+        value: 'Shot 030',
+        vertex: '1',
+        mxGeometry: [
+            {
+                x: 90,
+                y: -110,
+                width: 100,
+                height: 50,
+                as: geometry,
+            },
+        ],
+    },
+    {
+        id: 5,
+        parentNode: {
+            seq: "#f44336",
+        }
+        style: 'strokeColor=#f44336',
+        edge: 1,
+        parent: 1,
+        source: 2,
+        target: 3,
+        mxGeometry: [
+            {
+                relative: 1,
+                as: 'geometry',
+            },
+        ],
+    },
+    {
+        id: 6,
+        parentNode: {
+            seq: "#f44336",
+        }
+        style: 'strokeColor=#f44336',
+        edge: 1,
+        parent: 1,
+        source: 3,
+        target: 4,
+        mxGeometry: [
+            {
+                relative: 1,
+                as: 'geometry',
+            },
+        ],
+    },
+]
+```
