@@ -86,6 +86,26 @@ public boolean checkWin(char[][] map, char p) {
 }
 ```
 
+## [全局倒置与局部倒置](https://leetcode-cn.com/problems/global-and-local-inversions/description/)
+
+```java
+public boolean isIdealPermutation(int[] A) {
+    int max = 0;
+    // 如果数组长度小于2，则数量都为0
+    if (A.length < 2) {
+        return true;
+    }
+    for (int i = 0; i < A.length - 2; i++) {
+        max = Math.max(A[i], max);
+        // 如果两者数量相等，则全局倒置全是局部倒置。即不存在A[i]>A[j],其中i+2<=j;即max(A[i])>A[i+2]
+        if (max > A[i+2]) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
 
 # 数据库
 
