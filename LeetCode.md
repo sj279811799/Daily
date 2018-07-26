@@ -106,6 +106,12 @@ public boolean isIdealPermutation(int[] A) {
 }
 ```
 
+## [单词接龙](https://leetcode-cn.com/problems/word-ladder/description/)
+
+```java
+// 今天随机的题目有点难，待我周末学习一下DFS和BFS再搞。
+```
+
 
 # 数据库
 
