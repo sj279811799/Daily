@@ -112,6 +112,11 @@ public boolean isIdealPermutation(int[] A) {
 // 今天随机的题目有点难，待我周末学习一下DFS和BFS再搞。
 ```
 
+## [账户合并](https://leetcode-cn.com/problems/accounts-merge/description/)
+
+```java
+// 。。。
+```
 
 # 数据库
 
