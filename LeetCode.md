@@ -109,13 +109,39 @@ public boolean isIdealPermutation(int[] A) {
 ## [单词接龙](https://leetcode-cn.com/problems/word-ladder/description/)
 
 ```java
-// 今天随机的题目有点难，待我周末学习一下DFS和BFS再搞。
+// DFS和BFS
 ```
 
 ## [账户合并](https://leetcode-cn.com/problems/accounts-merge/description/)
 
 ```java
-// 。。。
+// 并查集
+```
+
+## [错误的集合](https://leetcode-cn.com/problems/set-mismatch/description/)
+
+```java
+public int[] findErrorNums(int[] nums) {
+    int res[] = new int[2];
+    int length = nums.length;
+    for (int i = 0; i < length; i++) {
+        // 正常情况，n = i + 1，即nums[i] = nums[nums[i] - 1]
+        if (nums[Math.abs(nums[i]) - 1] > 0) {
+            // 如果为整数，则变为负数
+            nums[Math.abs(nums[i]) - 1] *= -1;        
+        } else {
+            // 如果为负数，则说明是第二次出现，则为重复值
+            res[0] = Math.abs(nums[i]);
+        }
+    }
+    // 根据n = i + 1，找到缺失的值
+    for (int i = 0; i < length; i++) {
+        if (nums[i] > 0) {
+            res[1] = i + 1;
+        }
+    }
+    return res;
+}
 ```
 
 # 数据库
