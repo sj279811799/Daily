@@ -121,3 +121,16 @@ React.render
   }
 }
 ```
+
+上一步得到的是自定义组件，ReactCompositeComponentWrapper
+instance.render()
+
+```js
+{
+  type: 'div',
+    props: {
+    children: 'Hello World'
+  }
+}
+```
+
