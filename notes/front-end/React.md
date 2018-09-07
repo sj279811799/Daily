@@ -134,3 +134,11 @@ instance.render()
 }
 ```
 
+上一步得到的是原生DOM，ReactDOMComponent,如果上一步得到的还是自定义，就递归调用。
+
+上图中，实例化组件instance对象后，就会检查instance.componentWillMount，有的话则调用。
+
+渲染结束后，调用componentDidMount
+
+
+
