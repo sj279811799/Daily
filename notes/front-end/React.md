@@ -141,4 +141,13 @@ instance.render()
 渲染结束后，调用componentDidMount
 
 
+## element如何生成真实DOM节点
+
+组件触发更新方式有2种，state和props。
+
+![state](https://github.com/sj279811799/Daily/blob/master/notes/front-end/images/react1.png)
+
+1.setState -> pendingState -> dirtyComponent -> uptateComponent
+
+
 
