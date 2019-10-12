@@ -71,3 +71,12 @@ Context的使用场景是多个层级都需要访问同一批数据，这时可�
 如果一个class组件包含`static getDerivedStateFromError()`或者`componentDidCatch()`，则它就变成一个错误边界组件，可以在前者中展示错误备用UI，在后者展示错误信息。
 
 自React16开始，未被错误边界捕获的错误会导致这个组件树被卸载。
+
+### Refs转发
+
+`React.forwardRef`可以将父组件props中的ref转发给子组件，接收两个参数，第一个为props，第二个是转发的ref。可以将这个ref赋给子组件，当子组件渲染时，`ref.current`会指向子组件的DOM，这时就可以在调用父组件的地方操作子组件了。对于高阶组件HOC，可以在获取ref后，以props参数的形式向下传递，然后复制给子组件的ref。
+
+### Fragments
+
+当需要返回list时，可以使用Fragments，他可以对子列表分组，而不用添加额外的DOM节点。
+
