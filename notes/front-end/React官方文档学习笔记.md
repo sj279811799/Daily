@@ -16,7 +16,7 @@
 
 2、用 React 创建一个静态版本，只有props
 
-3、确定 UI state 的最小（且完整）表示
+3、确定 UI state 的最小（且完整）表示，可以计算产生的值，就不要放在state中
 
 4、确定 state 放置的位置，所有使用state的上一级
 
@@ -74,9 +74,128 @@ Context的使用场景是多个层级都需要访问同一批数据，这时可�
 
 ### Refs转发
 
-`React.forwardRef`可以将父组件props中的ref转发给子组件，接收两个参数，第一个为props，第二个是转发的ref。可以将这个ref赋给子组件，当子组件渲染时，`ref.current`会指向子组件的DOM，这时就可以在调用父组件的地方操作子组件了。对于高阶组件HOC，可以在获取ref后，以props参数的形式向下传递，然后复制给子组件的ref。
+`React.forwardRef`可以将父组件props中的ref转发给子组件，接收两个参数，第一个为props，第二个是转发的ref。可以将这个ref赋给子组件，当子组件渲染时，`ref.current`会指向子组件的DOM，这时就可以在调用父组件的地方操作子组件了。对于高阶组件HOC，可以在获取ref后，以props参数的形式向下传递，然后赋值给子组件的ref。
 
 ### Fragments
 
 当需要返回list时，可以使用Fragments，他可以对子列表分组，而不用添加额外的DOM节点。
+
+### 高阶组件
+
+高阶组件是参数为组件，返回值为新组件的函数。组件是将 props 转换为 UI，而高阶组件是将组件转换为另一个组件。
+
+1、使用 HOC 解决横切关注点问题
+
+2、不要改变原始组件。使用组合。
+
+3、约定：将不相关的 props 传递给被包裹的组件
+
+4、约定：最大化可组合性
+
+5、约定：包装显示名称以便轻松调试
+
+注意事项：
+
+1、不要在 render 方法中使用 HOC
+
+2、务必复制静态方法
+
+3、Refs 不会被传递
+
+### 与第三方库协同
+
+主要是利用React改写或包装第三方库。
+
+### 深入 JSX
+
+JavaScript XML，实际上是 React.createElement(component, props, ...children) 函数的语法糖
+
+### 性能优化
+
+[Chrome性能分析工具](https://juejin.im/post/5c8a0c45e51d450d85653590)
+
+shouldComponentUpdate或PureComponent控制组件的渲染，使用不可变数据来使得判断更新更加容易。
+
+### Portals
+
+Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
+
+```ReactDOM.createPortal(child, container)```
+
+### 不是用ES6 & JSX
+
+这种情况很少，简单了解
+
+### diff算法
+
+1、不同类型节点直接替换
+
+2、相同类型节点进行更新
+
+3、列表增加key，减少节点替换
+
+### Refs and the DOM
+
+以下情况适合refs：
+1、管理焦点，文本选择或媒体播放。
+2、触发强制动画。
+3、集成第三方 DOM 库。
+
+```this.myRef = React.createRef()```创建一个refs，赋值给一个节点的ref属性。
+
+```this.myRef.current```获取一个节点的ref。
+
+无法在函数组件中使用refs，因为它没有实例。但可以通过组件转发的技巧实现一个函数组件的refs使用。
+
+回调 Refs：ref属性赋值一个函数，函数接收一个参数为当前的节点的引用。
+
+### Render Props
+
+指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术。
+
+简单来说就是将要渲染的内容以props传入，组件只实现通用的方法。
+
+这里注意，如果要传入渲染函数，最好先定义好函数，然后将函数赋值给props。否则将导致每次PureComponent失效（每次都会生成一个新的函数实例）。
+
+### 静态类型检查
+
+推荐使用Flow或TypeScript替代PropTypes。
+
+### StrictMode
+
+使用```React.StrictMode```包裹需要开启严格模式的组件。
+
+StrictMode 目前有助于：
+1、识别不安全的生命周期
+2、关于使用过时字符串 ref API 的警告
+3、关于使用废弃的 findDOMNode 方法的警告
+4、检测意外的副作用
+5、检测过时的 context API
+
+### PropTypes
+
+对组件传入的prop类型进行检查
+
+```js
+import PropTypes from 'prop-types';
+
+class Greeting extends React.Component {}
+
+Greeting.propTypes = {
+  name: PropTypes.string
+};
+```
+
+除了类型检查还可检查isRequired，或者使用defaultProps来配置prop默认值。
+
+### 非受控组件
+
+组件值通过ref获取，不用state控制。
+
+### Web Components
+
+一般在使用第三方UI组件时，会使用Web Components。
+
+
+## API REFERENCE
 
