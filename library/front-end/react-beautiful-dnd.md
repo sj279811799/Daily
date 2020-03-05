@@ -24,3 +24,11 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
     </Droppable>
 </DragDropContext>
 ```
+
+### 注意事项
+
+1、 Droppable下的可拖拽元素如果是通过observer对象进行渲染，需要将拖拽元素单独拆分为observer组件，否则当observer对象发生变化时，Droppable下的元素不会重渲染。
+ 
+2、Draggable下的index必须连续，否则拖动时不连续的元素定位会有问题。
+
+3、```{provided.placeholder}``` 是起到占位的作用，即元素托起后，其他原来的位置会保留不被占用。
