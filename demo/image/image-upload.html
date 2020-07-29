@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片展示</title>
+    <style>
+        .preview {
+            width: 800px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" accept="image/*" multiple />
+    <img class="preview" />
+    <script type="text/javascript">
+        function onFileChange (e) {
+            const files = Array.prototype.slice.call(event.target.files);
+            files.forEach(file => {
+                console.log('file name:', file.name);
+            });
+            const file = files[0];
+            document.querySelector('img').src = window.URL.createObjectURL(file);
+        }
+        document.querySelector('input').addEventListener('change', onFileChange);
+    </script>
+</body>
+</html>
