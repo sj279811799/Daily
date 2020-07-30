@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        .wrapper {
+            margin: 60px;
+            /* 声明一个容器 */
+            display: grid;
+            /*  声明列的宽度  */
+            /*  repeat函数第一个参数表示重复几次，也可以指定为“auto-fill”，自动根据宽度填充  */
+            /*  第二个表示宽度，可以设置多个值；单位也可以设置为fr，表示占剩余宽度的几份，同时可以结合minmax()函数指定最小宽度；也可以设置为auto，自动填充宽度  */
+            grid-template-columns: repeat(3, 200px);
+            /*  声明行间距和列间距  */
+            grid-gap: 20px;
+            /*  声明行的高度,也可以使用repeat函数  */
+            grid-template-rows: 100px 200px;
+        }
+        .one {
+            background: #19CAAD;
+        }
+        .two { 
+            background: #8CC7B5;
+        }
+        .three {
+            background: #D1BA74;
+        }
+        .four {
+            background: #BEE7E9;
+        }
+        .five {
+            background: #E6CEAC;
+        }
+        .six {
+            background: #ECAD9E;
+        }
+        .item {
+            text-align: center;
+            font-size: 200%;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="one item">One</div>
+        <div class="two item">Two</div>
+        <div class="three item">Three</div>
+        <div class="four item">Four</div>
+        <div class="five item">Five</div>
+        <div class="six item">Six</div>
+    </div>
+</body>
+</html>
